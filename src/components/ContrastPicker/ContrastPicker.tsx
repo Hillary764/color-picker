@@ -46,7 +46,7 @@ export default function ContrastPicker() {
             before:top-0 before:h-1 before:w-full before:absolute before:rounded-full
             before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
         >
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-col md:flex-row gap-2">
             <div className="flex-1 flex flex-col justify-center items-center">
               <h3 className="text-lg">Background color:</h3>
               <ColorSelector
