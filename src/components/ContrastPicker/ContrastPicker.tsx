@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ColorSelector from "../ColorSelector/ColorSelector";
 import { contrast } from "../../utilities/contrast";
 import RatioCards from "../RatioCards/RatioCards";
@@ -25,6 +25,12 @@ export default function ContrastPicker() {
     green: 0,
     blue: 0,
   });
+
+  const [contrastVal, setContrastVal] = useState(1);
+
+  useEffect(() => {
+    setContrastVal(contrast(bgRGB, textRGB));
+  }, [bgRGB, textRGB]);
 
   return (
     <div
@@ -68,7 +74,7 @@ export default function ContrastPicker() {
         >
           <h3>Example text:</h3>
           <div
-            className="m-8 p-5"
+            className="m-8 p-5 border-2 rounded border-green-400"
             style={{
               backgroundColor: bg,
               color: textColor,
@@ -94,9 +100,7 @@ export default function ContrastPicker() {
         >
           <h3 className="text-lg">Contrast:</h3>
           <p className="w-full m-0 text-8xl text-center">
-            {contrast(bgRGB, textRGB)
-              .toString()
-              .match(/^-?\d+(?:\.\d{0,2})?/)?.[0] ?? ""}
+            {contrastVal.toString().match(/^-?\d+(?:\.\d{0,2})?/)?.[0] ?? ""}
             :1
           </p>
         </div>

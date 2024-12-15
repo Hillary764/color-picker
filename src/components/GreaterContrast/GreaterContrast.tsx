@@ -34,13 +34,17 @@ export default function GreaterContrast({ rgb1, rgb2, setValues }: Props) {
 
   return (
     <>
-      <div className="grid w-full lg:grid-cols-4 md:grid-cols-3 grid-cols-2 auto-rows-auto">
+      <div
+        className={`grid w-full 
+        lg:grid-cols-5 md:grid-cols-3 grid-cols-2 auto-rows-auto
+        gap-3`}
+      >
         {newContrastOptions.map((option, index) => {
           return (
             <div
               key={`${option.rgb1.red}-${option.rgb1.green}-${option.rgb1.blue}-${index}`}
             >
-              <div className="flex flex-row w-fit h-fit border-white border-2 my-2">
+              <div className="flex flex-row w-fit h-fit border-white border-2 ">
                 <div
                   className="flex-1 p-4 flex justify-center items-center"
                   style={{

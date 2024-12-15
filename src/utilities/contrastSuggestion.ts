@@ -1,6 +1,19 @@
 import { RGBMap } from "../components/ContrastPicker/ContrastPicker";
 import { luminance } from "./contrast";
 
+function updateColors(
+  rgbVal: RGBMap,
+  rChange: number,
+  gChange: number,
+  bChange: number
+) {
+  return {
+    red: Math.min(Math.max(rgbVal.red) + rChange, 255),
+    green: Math.min(Math.max(rgbVal.green) + gChange, 255),
+    blue: Math.min(Math.max(rgbVal.blue) + bChange, 255),
+  } as RGBMap;
+}
+
 function suggestDarker(rgbVal: RGBMap) {
   const suggestion1 = {
     red: Math.max(rgbVal.red - 25, 0),
@@ -20,7 +33,11 @@ function suggestDarker(rgbVal: RGBMap) {
     blue: Math.max(rgbVal.blue - 15, 0),
   };
 
-  return [suggestion1, suggestion2, suggestion3];
+  const suggestion4 = updateColors(rgbVal, -25, -45, -25);
+
+  const suggestion5 = updateColors(rgbVal, -35, -10, -10);
+
+  return [suggestion1, suggestion2, suggestion3, suggestion4, suggestion5];
 }
 
 function suggestLighter(rgbVal: RGBMap) {
@@ -42,7 +59,11 @@ function suggestLighter(rgbVal: RGBMap) {
     blue: Math.min(rgbVal.blue + 45, 255),
   };
 
-  return [suggestion1, suggestion2, suggestion3];
+  const suggestion4 = updateColors(rgbVal, 35, 15, 35);
+
+  const suggestion5 = updateColors(rgbVal, 10, 35, 35);
+
+  return [suggestion1, suggestion2, suggestion3, suggestion4, suggestion5];
 }
 
 interface NewContrastResults {
