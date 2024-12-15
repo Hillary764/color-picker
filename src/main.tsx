@@ -6,6 +6,7 @@ import HomeScreen from "./Routes/Home/Home.tsx";
 import { BrowserRouter, Routes, Route } from "react-router";
 import MainLayout from "./MainLayout.tsx";
 import NotFound from "./Routes/404/NotFound.tsx";
+import IconsScreen from "./Routes/Icons/Icons.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomeScreen />} />
+          <Route path="/icons" element={<IconsScreen />} />
           <Route path="/*" element={<NotFound />} />
         </Route>
       </Routes>

@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import ContrastPicker from "../../components/ContrastPicker/ContrastPicker";
 
 export default function HomeScreen() {
@@ -15,6 +16,15 @@ export default function HomeScreen() {
           >
             Home
           </h1>
+          <div className="flex flex-row flex-wrap items-center justify-center m-5">
+            <Link
+              className="rounded-lg bg-gradient-to-tr
+            from-teal-500 to-green-400 p-2 font-bold"
+              to={"/icons"}
+            >
+              Test Icons
+            </Link>
+          </div>
         </div>
       </div>
       <div className="p-10">
