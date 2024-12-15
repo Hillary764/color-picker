@@ -17,7 +17,7 @@ export default function Card({
              before:to-green-400 before:rounded-md 
              ${className ?? ""}`}
     >
-      <div className="bg-slate-950 w-full z-20 h-full">{children}</div>
+      <div className="bg-slate-950 w-full z-20 h-full p-5">{children}</div>
     </div>
   );
 }

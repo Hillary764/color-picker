@@ -3,6 +3,8 @@ import Card from "../../components/Card/Card";
 import { RGBMap } from "../../components/ContrastPicker/ContrastPicker";
 import ColorSelector from "../../components/ColorSelector/ColorSelector";
 import RatioResult from "../../components/RatioResult/RatioResult";
+import IconSuggestions from "../../components/IconSuggestions/IconSuggestions";
+import { rgbToHex } from "../../utilities/rgbToHex";
 
 export default function IconsScreen() {
   const [bg, setBg] = useState("#000000");
@@ -174,6 +176,23 @@ export default function IconsScreen() {
               />
             </div>
           </Card>
+          <IconSuggestions
+            bgRGB={bgRGB}
+            strokeRGB={strokeRGB}
+            fillRGB={fillRGB}
+            setBg={(map) => {
+              setBgRGB(map);
+              setBg(rgbToHex(map.red, map.green, map.blue));
+            }}
+            setFill={(map) => {
+              setFillRGB(map);
+              setFill(rgbToHex(map.red, map.green, map.blue));
+            }}
+            setStroke={(map) => {
+              setStrokeRGB(map);
+              setStroke(rgbToHex(map.red, map.green, map.blue));
+            }}
+          />
         </div>
       </div>
     </>

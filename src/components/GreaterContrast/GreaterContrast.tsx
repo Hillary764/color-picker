@@ -1,5 +1,6 @@
 import { suggestNewContrasts } from "../../utilities/contrastSuggestion";
-import { rgbToHex } from "../../utilities/rgbToHex";
+
+import ColorSwatch from "../ColorSwatch/ColorSwatch";
 import { RGBMap } from "../ContrastPicker/ContrastPicker";
 
 interface Props {
@@ -45,47 +46,18 @@ export default function GreaterContrast({ rgb1, rgb2, setValues }: Props) {
               key={`${option.rgb1.red}-${option.rgb1.green}-${option.rgb1.blue}-${index}`}
             >
               <div className="flex flex-row h-fit border-white border-2 ">
-                <div
-                  className="flex-1 p-4 flex justify-center items-center"
-                  style={{
-                    backgroundColor: rgbToHex(
-                      option.rgb1.red,
-                      option.rgb1.green,
-                      option.rgb1.blue
-                    ),
+                <ColorSwatch
+                  setColor={() => {
+                    setValues(option.rgb1, rgb2);
                   }}
-                >
-                  <button
-                    onClick={() => {
-                      setValues(option.rgb1, rgb2);
-                    }}
-                    className="rounded-lg px-3 py-1 my-3 bg-slate-950"
-                    type="button"
-                  >
-                    Select color
-                  </button>
-                </div>
-
-                <div
-                  className="flex-1 p-4   flex justify-center items-center"
-                  style={{
-                    backgroundColor: rgbToHex(
-                      option.rgb2.red,
-                      option.rgb2.green,
-                      option.rgb2.blue
-                    ),
+                  colorRgb={option.rgb1}
+                />
+                <ColorSwatch
+                  setColor={() => {
+                    setValues(rgb1, option.rgb2);
                   }}
-                >
-                  <button
-                    onClick={() => {
-                      setValues(rgb1, option.rgb2);
-                    }}
-                    className="rounded-lg px-3 py-1 my-3 bg-slate-950"
-                    type="button"
-                  >
-                    Select color
-                  </button>
-                </div>
+                  colorRgb={option.rgb2}
+                />
               </div>
             </div>
           );

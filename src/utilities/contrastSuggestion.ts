@@ -94,3 +94,40 @@ export function suggestNewContrasts(rgb1: RGBMap, rgb2: RGBMap) {
     } as NewContrastResults;
   }
 }
+
+export interface IconContrastResults {
+  bg: RGBMap[];
+  stroke: RGBMap[];
+  fill: RGBMap[];
+}
+
+export function suggestIconContrasts(
+  bgRGB: RGBMap,
+  strokeRGB: RGBMap,
+  fillRGB: RGBMap
+): IconContrastResults {
+  const bgLum = luminance(bgRGB.red, bgRGB.green, bgRGB.blue);
+
+  const strokeLum = luminance(strokeRGB.red, strokeRGB.green, strokeRGB.blue);
+
+  if (bgLum > strokeLum) {
+    // background is brighter
+    const newBG = suggestLighter(bgRGB);
+    const newStroke = suggestDarker(strokeRGB);
+    const newFill = suggestLighter(fillRGB);
+
+    return {
+      bg: newBG,
+      stroke: newStroke,
+      fill: newFill,
+    };
+  } else {
+    // stroke is brighter
+
+    return {
+      bg: suggestDarker(bgRGB),
+      stroke: suggestLighter(strokeRGB),
+      fill: suggestDarker(fillRGB),
+    };
+  }
+}
