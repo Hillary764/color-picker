@@ -1,5 +1,5 @@
 import { RGBMap } from "../components/ContrastPicker/ContrastPicker";
-import { luminance } from "./contrast";
+import { contrast, luminance } from "./contrast";
 
 function updateColors(
   rgbVal: RGBMap,
@@ -114,20 +114,49 @@ export function suggestIconContrasts(
     // background is brighter
     const newBG = suggestLighter(bgRGB);
     const newStroke = suggestDarker(strokeRGB);
-    const newFill = suggestLighter(fillRGB);
 
+    // still need to decide fill direction
+    const newFill = suggestDarker(fillRGB);
+    const newFill2 = suggestLighter(fillRGB);
+
+    const newDarkerContrast = contrast(newFill[0], newStroke[0]);
+    const newLighterContrast = contrast(newFill2[0], newStroke[0]);
+
+    if (newLighterContrast > newDarkerContrast) {
+      return {
+        bg: newBG,
+        stroke: newStroke,
+        fill: newFill2,
+      };
+    }
     return {
       bg: newBG,
       stroke: newStroke,
       fill: newFill,
     };
   } else {
-    // stroke is brighter
+    // stroke is brighter than bg
+
+    const strokeSuggestions = suggestLighter(strokeRGB);
+
+    const fillSugg1 = suggestDarker(fillRGB);
+    const fillSugg2 = suggestLighter(fillRGB);
+
+    const darkerContrast = contrast(fillSugg1[0], strokeSuggestions[0]);
+    const ligherContrast = contrast(fillSugg2[0], strokeSuggestions[0]);
+
+    if (ligherContrast > darkerContrast) {
+      return {
+        bg: suggestDarker(bgRGB),
+        stroke: strokeSuggestions,
+        fill: fillSugg2,
+      };
+    }
 
     return {
       bg: suggestDarker(bgRGB),
-      stroke: suggestLighter(strokeRGB),
-      fill: suggestDarker(fillRGB),
+      stroke: strokeSuggestions,
+      fill: fillSugg1,
     };
   }
 }
