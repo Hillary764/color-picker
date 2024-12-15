@@ -72,7 +72,7 @@ export default function IconSuggestions({
     for (let i = 0; i < maxCount; i++) {
       itemsMap.push(
         <div
-          className="w-full m-2 grid grid-cols-3"
+          className="w-full m-2 grid grid-cols-3 border-2 border-green-300"
           key={`suggestion-colors-${i}-${allSuggestions.bg[i].blue}`}
         >
           <ColorSwatch

@@ -31,14 +31,15 @@ export default function IconsScreen() {
   return (
     <>
       <Card className="m-10 [&>div]:p-5">
-        <h1 className="w-full text-center py-5 text-4xl">Test Icon Colors</h1>
+        <h1 className="w-full text-center py-5 text-4xl">Test Icon Colors</h1>{" "}
+        <p className="text-green-300 text-lg max-w-xl mx-auto text-center mb-10">
+          Icon contrast is slightly less strict than text contrast, only
+          requiring a contrast of 3:1. In text, you must check the contrast
+          between the background and text color. In icons, you must check the
+          contrast between <em>any adjacent colors.</em>
+        </p>
       </Card>
-      <p className="text-green-300 text-lg max-w-xl mx-auto text-center mb-10">
-        Icon contrast is slightly less strict than text contrast, only requiring
-        a contrast of 3:1. In text, you must check the contrast between the
-        background and text color. In icons, you must check the contrast between{" "}
-        <em>any adjacent colors.</em>
-      </p>
+
       <div className={`gap-5 grid grid-cols-1 lg:grid-cols-2 px-5`}>
         <div className="h-full">
           <Card
