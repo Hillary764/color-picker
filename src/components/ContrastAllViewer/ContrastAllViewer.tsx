@@ -3,6 +3,7 @@ import { RGBMap } from "../ContrastPicker/ContrastPicker";
 import Card from "../Card/Card";
 import ColorListAllContrast from "./ColorListAllContrast/ColorListAllContrast";
 import BestContrastList from "./BestContrastInList/BestContrastInList";
+import IconDesign from "./IconDesign/IconDesign";
 
 export interface CombinedColorValue {
   hex: string;
@@ -23,6 +24,9 @@ export default function ContrastAllViewer({ contrastList }: Props) {
 
       case 1:
         return <BestContrastList contrastList={contrastList} />;
+
+      case 2:
+        return <IconDesign colorList={contrastList} />;
 
       default:
         return null;
@@ -65,6 +69,23 @@ export default function ContrastAllViewer({ contrastList }: Props) {
             className="mx-4 text-xl font-bold"
           >
             Best Ratios
+          </button>
+        </Card>
+        <Card
+          className={`${
+            windowIndex == 2
+              ? `[&>div]:bg-gradient-to-tr
+               [&>div]:from-teal-500 [&>div]:to-green-400 [&>div]:text-slate-950 `
+              : ``
+          }`}
+        >
+          <button
+            onClick={() => {
+              setWindowIndex(2);
+            }}
+            className="mx-4 text-xl font-bold"
+          >
+            Design Icons
           </button>
         </Card>
       </div>

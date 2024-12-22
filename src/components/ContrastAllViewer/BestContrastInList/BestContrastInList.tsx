@@ -28,11 +28,14 @@ export default function BestContrastList({ contrastList }: Props) {
           luminanceMap[temp1],
           luminanceMap[temp2]
         );
-        tempList.push({
-          color1: contrastList[temp1].hex,
-          color2: contrastList[temp2].hex,
-          ratio: newContrast,
-        });
+        if (newContrast >= 3) {
+          tempList.push({
+            color1: contrastList[temp1].hex,
+            color2: contrastList[temp2].hex,
+            ratio: newContrast,
+          });
+        }
+
         temp2++;
       }
 

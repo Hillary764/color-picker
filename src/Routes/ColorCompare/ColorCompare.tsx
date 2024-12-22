@@ -1,12 +1,9 @@
 import { useState } from "react";
 import Card from "../../components/Card/Card";
 import { RGBMap } from "../../components/ContrastPicker/ContrastPicker";
-import ColorSelectorLocal from "../../components/ColorSelector/ColorSelectorLocal/ColorSelectorLocal";
-import { rgbToHex } from "../../utilities/rgbToHex";
 import ContrastAllViewer, {
   CombinedColorValue,
 } from "../../components/ContrastAllViewer/ContrastAllViewer";
-import { hexToRgb } from "../../utilities/hexToRgb";
 import ColorSelector from "../../components/ColorSelector/ColorSelector";
 
 export default function ColorCompareScreen() {
@@ -20,7 +17,6 @@ export default function ColorCompareScreen() {
       },
     },
   ]);
-  const [currColorIndex, setCurrColorIndex] = useState<number>(0);
 
   function addColor() {
     setColors((state) => {
@@ -46,18 +42,18 @@ export default function ColorCompareScreen() {
     });
   }
 
-  function updateColor(hex: string, rgb: RGBMap, index: number) {
-    if (index >= 0 && index < colors.length) {
-      setColors((state) => {
-        const temp2 = [...state];
-        temp2[index] = {
-          hex: hex,
-          rgb: rgb,
-        };
-        return temp2;
-      });
-    }
-  }
+  // function updateColor(hex: string, rgb: RGBMap, index: number) {
+  //   if (index >= 0 && index < colors.length) {
+  //     setColors((state) => {
+  //       const temp2 = [...state];
+  //       temp2[index] = {
+  //         hex: hex,
+  //         rgb: rgb,
+  //       };
+  //       return temp2;
+  //     });
+  //   }
+  // }
 
   return (
     <>
@@ -80,6 +76,21 @@ export default function ColorCompareScreen() {
       <div className={`m-10`}>
         <Card className="">
           <h2>Current Swatches</h2>
+          <h3>All swatches:</h3>
+
+          <div className="flex flex-row flex-wrap gap-2 sticky top-2">
+            {colors.map((item, index) => (
+              <div
+                className={`max-w-fit py-2 px-4 border-green-300 border-2`}
+                style={{
+                  backgroundColor: item.hex,
+                }}
+                key={`quick-swatch-${index}-${item.hex}`}
+              >
+                <p className="px-2 py-1 bg-slate-950 rounded">{item.hex}</p>
+              </div>
+            ))}
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {colors.map((item, index) => (
               <div key={`${index}`}>

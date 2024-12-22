@@ -57,7 +57,7 @@ export default function ColorListAllContrast({ contrastList }: Props) {
   }
 
   return (
-    <div className="my-3">
+    <div className="mb-3 mt-8">
       <h2>Select a color to examine:</h2>
       <div className="flex my-4 flex-row flex-wrap gap-3">
         {contrastList.map((colorItem, colorIndex) => (
@@ -89,44 +89,7 @@ export default function ColorListAllContrast({ contrastList }: Props) {
             (contrastRatioItem, ratioIndex) => (
               <div key={`${contrastRatioItem.color2}-${ratioIndex}`}>
                 <h3>ratio number {ratioIndex + 1}</h3>
-                {/* <div className="flex flex-row flex-wrap">
-                  <div className=" max-w-48 flex-1 flex flex-row flex-wrap">
-                    <div
-                      className="flex-1"
-                      style={{
-                        backgroundColor: contrastRatioItem.color1,
-                      }}
-                    />{" "}
-                    <div
-                      className="flex-1"
-                      style={{
-                        backgroundColor: contrastRatioItem.color2,
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={`p-4 flex-1`}
-                    style={{
-                      backgroundColor: contrastRatioItem.color1,
-                      color: contrastRatioItem.color2,
-                    }}
-                  >
-                    <p className="text-5xl mb-2">
-                      {" "}
-                      Lorem ipsum dolor sit amet ✔ ✗ ☺
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum. ✔ ✗ ☺
-                    </p>
-                  </div>
-                </div> */}
+
                 <ExampleText
                   color1={contrastRatioItem.color1}
                   color2={contrastRatioItem.color2}
