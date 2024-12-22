@@ -6,8 +6,8 @@ import { rgbToHex } from "../../utilities/rgbToHex";
 interface Props {
   hexColor: string;
   rgbMap: RGBMap;
-  setHexColor: Dispatch<SetStateAction<string>>;
-  setRgbMap: Dispatch<SetStateAction<RGBMap>>;
+  setHexColor: Dispatch<SetStateAction<string>> | ((hex: string) => void);
+  setRgbMap: Dispatch<SetStateAction<RGBMap>> | ((rgb: RGBMap) => void);
 }
 
 export default function ColorSelector({
@@ -49,10 +49,14 @@ export default function ColorSelector({
         <input
           value={tempHex}
           onChange={(e) => {
-            const tempRGB = hexToRgb(e.target.value);
+            let fixed = e.target.value;
+            if (!e.target.value.startsWith("#")) {
+              fixed = `#${e.target.value}`;
+            }
+            const tempRGB = hexToRgb(fixed);
             if (tempRGB) {
               setRgbMap(tempRGB);
-              setHexColor(e.target.value);
+              setHexColor(fixed);
             }
             setTempHex(e.target.value);
           }}
@@ -77,12 +81,10 @@ export default function ColorSelector({
             const fixedInt = Math.max(0, Math.min(255, asInt));
             const newHex = rgbToHex(fixedInt, rgbMap.green, rgbMap.blue);
             setHexColor(newHex);
-            setRgbMap((state) => {
-              return {
-                red: fixedInt,
-                green: state.green,
-                blue: state.blue,
-              };
+            setRgbMap({
+              red: fixedInt,
+              green: rgbMap.green,
+              blue: rgbMap.blue,
             });
           }}
         />
@@ -102,12 +104,10 @@ export default function ColorSelector({
             const fixedInt = Math.max(0, Math.min(255, asInt));
             const newHex = rgbToHex(rgbMap.red, fixedInt, rgbMap.blue);
             setHexColor(newHex);
-            setRgbMap((state) => {
-              return {
-                red: state.red,
-                green: fixedInt,
-                blue: state.blue,
-              };
+            setRgbMap({
+              red: rgbMap.red,
+              green: fixedInt,
+              blue: rgbMap.blue,
             });
           }}
         />
@@ -127,12 +127,10 @@ export default function ColorSelector({
             const fixedInt = Math.max(0, Math.min(255, asInt));
             const newHex = rgbToHex(rgbMap.red, rgbMap.green, fixedInt);
             setHexColor(newHex);
-            setRgbMap((state) => {
-              return {
-                red: state.red,
-                green: state.green,
-                blue: fixedInt,
-              };
+            setRgbMap({
+              red: rgbMap.red,
+              green: rgbMap.green,
+              blue: fixedInt,
             });
           }}
         />

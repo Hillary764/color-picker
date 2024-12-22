@@ -15,6 +15,12 @@ export function luminance(r: number, g: number, b: number) {
   return a[0] * RED + a[1] * GREEN + a[2] * BLUE;
 }
 
+export function contrastByLum(lum1: number, lum2: number) {
+  const brightest = Math.max(lum1, lum2);
+  const darkest = Math.min(lum1, lum2);
+  return (brightest + 0.05) / (darkest + 0.05);
+}
+
 export function contrast(rgb1: RGBMap, rgb2: RGBMap) {
   const lum1 = luminance(rgb1.red, rgb1.green, rgb1.blue);
   const lum2 = luminance(rgb2.red, rgb2.green, rgb2.blue);

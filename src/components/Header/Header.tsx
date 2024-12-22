@@ -14,15 +14,23 @@ export default function Header() {
           before:bg-slate-950 hover:before:w-full before:transition-[width]`}
           to={"/"}
         >
-          Home
+          Text Contrast
         </Link>
-        <div className="h-2/3 w-0.5 bg-black" />
+        <div className="h-2/3 w-0 rounded border-l-2 border-black" />
         <Link
           className={`relative before:absolute before:bottom-0 before:left-0 before:h-px before:w-0
           before:bg-slate-950 hover:before:w-full before:transition-[width]`}
           to="/icons"
         >
           Icon Contrast
+        </Link>
+        <div className="h-2/3 w-0 rounded border-l-2 border-black" />
+        <Link
+          className={`relative before:absolute before:bottom-0 before:left-0 before:h-px before:w-0
+          before:bg-slate-950 hover:before:w-full before:transition-[width]`}
+          to="/palette-compare"
+        >
+          Compare Palette Colors
         </Link>
       </nav>
     </header>
