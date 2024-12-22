@@ -4,6 +4,7 @@ import { contrast } from "../../utilities/contrast";
 import RatioCards from "../RatioCards/RatioCards";
 import GreaterContrast from "../GreaterContrast/GreaterContrast";
 import { rgbToHex } from "../../utilities/rgbToHex";
+import ExampleText from "../ExampleText/ExampleText";
 
 export interface RGBMap {
   red: number;
@@ -73,7 +74,7 @@ export default function ContrastPicker() {
             before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
         >
           <h3>Example text:</h3>
-          <div
+          {/* <div
             className="m-8 p-5 border-2 rounded border-green-400"
             style={{
               backgroundColor: bg,
@@ -91,7 +92,8 @@ export default function ContrastPicker() {
               sunt in culpa qui officia deserunt mollit anim id est laborum. ✔ ✗
               ☺
             </p>
-          </div>
+          </div> */}
+          <ExampleText color1={bg} color2={textColor} />
         </div>
         <div
           className={`mt-8 pt-5 relative w-full
