@@ -3,7 +3,7 @@ import Card from "../../components/Card/Card";
 import { RGBMap } from "../../components/ContrastPicker/ContrastPicker";
 import ColorSelector from "../../components/ColorSelector/ColorSelector";
 import RatioResult from "../../components/RatioResult/RatioResult";
-import IconSuggestions from "../../components/IconSuggestions/IconSuggestions";
+import IconSuggestions from "../../components/icons/IconSuggestions/IconSuggestions";
 import { rgbToHex } from "../../utilities/rgbToHex";
 
 export default function IconsScreen() {

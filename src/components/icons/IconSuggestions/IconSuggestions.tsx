@@ -1,10 +1,10 @@
-import Card from "../Card/Card";
-import { RGBMap } from "../ContrastPicker/ContrastPicker";
+import Card from "../../Card/Card";
+import { RGBMap } from "../../ContrastPicker/ContrastPicker";
 import {
   IconContrastResults,
   suggestIconContrasts,
-} from "../../utilities/contrastSuggestion";
-import ColorSwatch from "../ColorSwatch/ColorSwatch";
+} from "../../../utilities/contrastSuggestion";
+import ColorSwatch from "../../ColorSwatch/ColorSwatch";
 
 interface Props {
   bgRGB: RGBMap;

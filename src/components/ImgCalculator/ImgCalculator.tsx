@@ -2,7 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import { pullProminentColors } from "../../utilities/imgColors";
 import { rgbToHex } from "../../utilities/rgbToHex";
 
-export default function ImgCalculator() {
+interface Props {
+  addColor: (hex: string) => void;
+}
+
+export default function ImgCalculator({ addColor }: Props) {
   const [inputVal, setInputVal] = useState<null | FileList>(null);
   const [numToExtract, setNumToExtract] = useState(0);
   const [autoHexes, setAutoHexes] = useState<string[]>([]);
@@ -100,13 +104,14 @@ export default function ImgCalculator() {
                   const pixel = context?.getImageData(x, y, 1, 1).data;
                   console.log(`rgb(${pixel?.[0]},${pixel?.[1]},${pixel?.[2]})`);
                   if (pixel && pixel.length >= 3) {
+                    const hex = rgbToHex(pixel[0], pixel[1], pixel[2]);
                     setSelectedHexes((state) => {
-                      const hex = rgbToHex(pixel[0], pixel[1], pixel[2]);
                       if (!state.includes(hex)) {
                         return [...state, hex];
                       }
                       return state;
                     });
+                    addColor(hex);
                   }
                 }
               }
@@ -120,7 +125,7 @@ export default function ImgCalculator() {
           </canvas>
           <p>
             Click on the image preview to select colors manually. This will
-            likely yield the best result
+            likely yield the best result.
           </p>
           <div className="flex flex-row flex-wrap">
             {selectedHexes.map((item, index) => (
@@ -137,6 +142,10 @@ export default function ImgCalculator() {
               </div>
             ))}
           </div>
+          <p>
+            You may have the program try to auto-extract your color palette.
+            Note: this may not create 100% accurate results
+          </p>
           <label>
             Select number of colors to extract:
             <input
@@ -164,6 +173,18 @@ export default function ImgCalculator() {
                 </p>
               </div>
             ))}
+          </div>
+          <div>
+            <button
+              type="button"
+              onClick={() => {
+                autoHexes.forEach((hexItem) => {
+                  addColor(hexItem);
+                });
+              }}
+            >
+              Add extracted palette to list
+            </button>
           </div>
         </div>
       ) : null}
