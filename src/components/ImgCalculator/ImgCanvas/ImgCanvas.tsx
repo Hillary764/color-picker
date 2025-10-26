@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { rgbToHex } from "../../../utilities/rgbToHex";
+import { hexToRgb } from "../../../utilities/hexToRgb";
 
 interface Props {
   icon: File;
@@ -146,7 +147,9 @@ export default function ImgCanvas({ icon, addColor }: Props) {
           }}
           onFocus={(e) => {
             if (e.target.matches(":focus-visible")) {
-              e.target.scrollIntoView();
+              e.target.scrollIntoView({
+                block: "start",
+              });
               setShowCursor(true);
             }
           }}
@@ -186,10 +189,10 @@ export default function ImgCanvas({ icon, addColor }: Props) {
             }
             //   console.log(x, y);
           }}
-          className="[&>*]:object-contain relative"
+          className="[&>*]:object-contain relative scroll-my-4"
           ref={canvasRef}
         >
-          preview of {icon.name}
+          preview of {icon.name}. see previous paragraphs for keyboard controls.
         </canvas>
         <div
           style={{
@@ -203,7 +206,38 @@ export default function ImgCanvas({ icon, addColor }: Props) {
       before:-top-2 before:-left-2`}
         ></div>
       </div>
+      <div>
+        {cursorPreview && hexToRgb(cursorPreview) ? (
+          <div className="flex flex-row flex-wrap border-2 border-green-400 rounded-lg overflow-hidden">
+            <div
+              className={` min-h-8 w-24 max-w-[100vw]`}
+              style={{
+                backgroundColor: cursorPreview,
+              }}
+            ></div>
+            <div className="flex flex-col gap-1 p-3" tabIndex={0}>
+              <p>Current cursor color:</p>
+              <p>Hex: {cursorPreview}</p>
 
+              <p>
+                {`Red: ${hexToRgb(cursorPreview)?.red};`}
+                {` Green: ${hexToRgb(cursorPreview)?.green};`}
+                {` Blue: ${hexToRgb(cursorPreview)?.blue}`}
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  addColor(cursorPreview);
+                }}
+                className={`px-3 py-1 rounded hover:bg-green-400 hover:text-black
+                border-2 border-green-400 focus:bg-green-400 focus:text-black `}
+              >
+                Add color
+              </button>
+            </div>
+          </div>
+        ) : null}
+      </div>
       <p>
         Click on the image preview to select colors manually. This will likely
         yield the best result.

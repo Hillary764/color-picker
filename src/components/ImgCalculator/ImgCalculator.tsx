@@ -96,6 +96,9 @@ export default function ImgCalculator({ addColor }: Props) {
               onChange={(e) => {
                 const updated = e.target.value.replace(/\D/g, "");
                 if (isNaN(Number.parseInt(updated))) {
+                  if (e.target.value === "") {
+                    setNumToExtract(0);
+                  }
                   return;
                 }
                 setNumToExtract(Number.parseInt(updated));
