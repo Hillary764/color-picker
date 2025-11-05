@@ -8,18 +8,21 @@ import MainLayout from "./MainLayout.tsx";
 import NotFound from "./Routes/404/NotFound.tsx";
 import IconsScreen from "./Routes/Icons/Icons.tsx";
 import ColorCompareScreen from "./Routes/ColorCompare/ColorCompare.tsx";
+import { AuthProvider } from "./utilities/AuthProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/icons" element={<IconsScreen />} />
-          <Route path="palette-compare" element={<ColorCompareScreen />} />
-          <Route path="/*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/icons" element={<IconsScreen />} />
+            <Route path="palette-compare" element={<ColorCompareScreen />} />
+            <Route path="/*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   </StrictMode>
 );
