@@ -95,7 +95,7 @@ export default function IconsScreen() {
             <h2 className="text-2xl">Select Colors</h2>
             <h3
               className={`text-lg relative pt-5 mt-5 before:top-0 before:h-1 before:w-full before:absolute before:rounded-full
-            before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
+            before:bg-linear-to-tr before:from-teal-500 before:to-green-400`}
             >
               Main background color:
             </h3>
@@ -107,7 +107,7 @@ export default function IconsScreen() {
             />
             <h3
               className={`text-lg relative pt-5 mt-5 before:top-0 before:h-1 before:w-full before:absolute before:rounded-full
-            before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
+            before:bg-linear-to-tr before:from-teal-500 before:to-green-400`}
             >
               Border color:
             </h3>
@@ -119,7 +119,7 @@ export default function IconsScreen() {
             />
             <h3
               className={`text-lg relative pt-5 mt-5 before:top-0 before:h-1 before:w-full before:absolute before:rounded-full
-            before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
+            before:bg-linear-to-tr before:from-teal-500 before:to-green-400`}
             >
               Icon fill color:
             </h3>
@@ -134,7 +134,7 @@ export default function IconsScreen() {
             <h2 className="text-2xl">Calculated Contrast</h2>
             <h3
               className={`text-lg relative pt-5 mt-5 before:top-0 before:h-1 before:w-full before:absolute before:rounded-full
-            before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
+            before:bg-linear-to-tr before:from-teal-500 before:to-green-400`}
             >
               Background and Border:
             </h3>
@@ -156,7 +156,7 @@ export default function IconsScreen() {
             </div>
             <h3
               className={`text-lg relative pt-5 mt-5 before:top-0 before:h-1 before:w-full before:absolute before:rounded-full
-            before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
+            before:bg-linear-to-tr before:from-teal-500 before:to-green-400`}
             >
               Border and Fill:
             </h3>

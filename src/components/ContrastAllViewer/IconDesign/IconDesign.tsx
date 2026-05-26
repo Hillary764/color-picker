@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CombinedColorValue } from "../ContrastAllViewer";
 import { contrast } from "../../../utilities/contrast";
 import RatioCards from "../../RatioCards/RatioCards";
@@ -16,31 +16,6 @@ export default function IconDesign({ colorList }: Props) {
 
   const [first, setFirst] = useState<number>(0);
   const [second, setSecond] = useState<number>(0);
-
-  useEffect(() => {
-    const newLength = colorList.length;
-
-    setSelectedOptions((state) => {
-      return state.filter((currValue) => {
-        if (currValue >= newLength) {
-          return false;
-        }
-        return true;
-      });
-    });
-
-    setFirst(0);
-    setSecond(0);
-
-    setIndexEdges((state) => {
-      return state.filter((edge) => {
-        if (edge[0] >= newLength || edge[1] >= newLength) {
-          return false;
-        }
-        return true;
-      });
-    });
-  }, [colorList]);
 
   function addIndexEdge(newEdge: EdgeByIndex) {
     setIndexEdges((state) => {
@@ -226,7 +201,9 @@ export default function IconDesign({ colorList }: Props) {
               key={`select-button-${index}-${colorVal}`}
               className={`py-2 px-6 border-2 border-green-300`}
             >
-              <span className="p-1 bg-slate-950 rounded">{colorVal.hex}</span>
+              <span className="p-1 bg-slate-950 rounded-sm">
+                {colorVal.hex}
+              </span>
             </button>
           ))}
         </div>
@@ -256,7 +233,7 @@ export default function IconDesign({ colorList }: Props) {
                   backgroundColor: selectedColor.hex,
                 }}
               >
-                <span className="p-1 bg-slate-950 rounded">
+                <span className="p-1 bg-slate-950 rounded-sm">
                   Remove this color {`(${selectedColor.hex})`}
                 </span>
               </button>
@@ -292,7 +269,7 @@ export default function IconDesign({ colorList }: Props) {
                   }}
                   className="px-6 py-4 flex-1"
                 >
-                  <p className="p-2 bg-slate-950 rounded">{value[0]}</p>
+                  <p className="p-2 bg-slate-950 rounded-sm">{value[0]}</p>
                 </div>
                 <div
                   style={{
@@ -300,7 +277,7 @@ export default function IconDesign({ colorList }: Props) {
                   }}
                   className="px-6 py-4 flex-1"
                 >
-                  <p className="p-2 bg-slate-950 rounded">{value[1]}</p>
+                  <p className="p-2 bg-slate-950 rounded-sm">{value[1]}</p>
                 </div>
                 <button
                   className="p-3 border-2 border-green-300 w-full "
@@ -338,7 +315,7 @@ export default function IconDesign({ colorList }: Props) {
                     }}
                     key={`color-1-selector-${selectedOptionIndex}`}
                   >
-                    <span className={`rounded bg-slate-950 p-2`}>
+                    <span className={`rounded-sm bg-slate-950 p-2`}>
                       Set <span className="sr-only">color 1</span> to{" "}
                       {value.hex}
                     </span>
@@ -367,7 +344,7 @@ export default function IconDesign({ colorList }: Props) {
                     }}
                     key={`color-2-selector-${selectedOptionIndex}`}
                   >
-                    <span className={`rounded bg-slate-950 p-2`}>
+                    <span className={`rounded-sm bg-slate-950 p-2`}>
                       Set <span className="sr-only">color 2</span> to{" "}
                       {value.hex}
                     </span>
@@ -387,7 +364,7 @@ export default function IconDesign({ colorList }: Props) {
                     backgroundColor: colorList[selectedOptions[first]].hex,
                   }}
                 >
-                  <p className="py-2 px-8 rounded bg-slate-950 w-fit">
+                  <p className="py-2 px-8 rounded-sm bg-slate-950 w-fit">
                     {colorList[selectedOptions[first]].hex}
                   </p>
                 </div>
@@ -399,7 +376,7 @@ export default function IconDesign({ colorList }: Props) {
                     backgroundColor: colorList[selectedOptions[second]].hex,
                   }}
                 >
-                  <p className="py-2 px-8 rounded bg-slate-950 w-fit">
+                  <p className="py-2 px-8 rounded-sm bg-slate-950 w-fit">
                     {colorList[selectedOptions[second]].hex}
                   </p>
                 </div>
@@ -441,7 +418,7 @@ export default function IconDesign({ colorList }: Props) {
                           backgroundColor: value.color1,
                         }}
                       >
-                        <p className="bg-slate-950 p-2 rounded">
+                        <p className="bg-slate-950 p-2 rounded-sm">
                           {value.color1}
                         </p>
                       </div>
@@ -451,7 +428,7 @@ export default function IconDesign({ colorList }: Props) {
                           backgroundColor: value.color2,
                         }}
                       >
-                        <p className="bg-slate-950 p-2 rounded">
+                        <p className="bg-slate-950 p-2 rounded-sm">
                           {value.color2}
                         </p>
                       </div>
@@ -484,7 +461,7 @@ export default function IconDesign({ colorList }: Props) {
                           backgroundColor: value.color1,
                         }}
                       >
-                        <p className="bg-slate-950 p-2 rounded">
+                        <p className="bg-slate-950 p-2 rounded-sm">
                           {value.color1}
                         </p>
                       </div>
@@ -494,7 +471,7 @@ export default function IconDesign({ colorList }: Props) {
                           backgroundColor: value.color2,
                         }}
                       >
-                        <p className="bg-slate-950 p-2 rounded">
+                        <p className="bg-slate-950 p-2 rounded-sm">
                           {value.color2}
                         </p>
                       </div>
