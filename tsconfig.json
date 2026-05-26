@@ -1,5 +1,9 @@
 {
   "files": [],
+  "compilerOptions": {
+    "types": ["*"],
+    "rootDir": "./src"
+  },
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }

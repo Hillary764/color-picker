@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { RGBMap } from "../ContrastPicker/ContrastPicker";
 import { hexToRgb } from "../../utilities/hexToRgb";
 import { rgbToHex } from "../../utilities/rgbToHex";
@@ -18,10 +18,6 @@ export default function ColorSelector({
 }: Props) {
   const [tempHex, setTempHex] = useState(hexColor);
 
-  useEffect(() => {
-    setTempHex(hexColor);
-  }, [hexColor]);
-
   return (
     <div>
       <label className={`flex flex-row flex-wrap items-center gap-3`}>
@@ -36,10 +32,11 @@ export default function ColorSelector({
                   red: 0,
                   green: 0,
                   blue: 0,
-                }
+                },
               );
             }
             setHexColor(e.target.value);
+            setTempHex(e.target.value);
           }}
           type="color"
         />
@@ -81,6 +78,7 @@ export default function ColorSelector({
             const fixedInt = Math.max(0, Math.min(255, asInt));
             const newHex = rgbToHex(fixedInt, rgbMap.green, rgbMap.blue);
             setHexColor(newHex);
+            setTempHex(newHex);
             setRgbMap({
               red: fixedInt,
               green: rgbMap.green,
@@ -104,6 +102,7 @@ export default function ColorSelector({
             const fixedInt = Math.max(0, Math.min(255, asInt));
             const newHex = rgbToHex(rgbMap.red, fixedInt, rgbMap.blue);
             setHexColor(newHex);
+            setTempHex(newHex);
             setRgbMap({
               red: rgbMap.red,
               green: fixedInt,
@@ -127,6 +126,7 @@ export default function ColorSelector({
             const fixedInt = Math.max(0, Math.min(255, asInt));
             const newHex = rgbToHex(rgbMap.red, rgbMap.green, fixedInt);
             setHexColor(newHex);
+            setTempHex(newHex);
             setRgbMap({
               red: rgbMap.red,
               green: rgbMap.green,

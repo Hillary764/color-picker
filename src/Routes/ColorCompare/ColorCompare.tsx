@@ -138,7 +138,7 @@ export default function ColorCompareScreen() {
                 }}
                 key={`quick-swatch-${index}-${item.hex}`}
               >
-                <p className="px-2 py-1 bg-slate-950 rounded">{item.hex}</p>
+                <p className="px-2 py-1 bg-slate-950 rounded-sm">{item.hex}</p>
               </div>
             ))}
           </div>
