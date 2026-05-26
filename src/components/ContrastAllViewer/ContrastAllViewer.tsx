@@ -18,15 +18,16 @@ export default function ContrastAllViewer({ contrastList }: Props) {
   const [windowIndex, setWindowIndex] = useState(0);
 
   function getWindow(index: number) {
+    const key = contrastList.map((item) => item.hex).join(",");
     switch (index) {
       case 0:
-        return <ColorListAllContrast contrastList={contrastList} />;
+        return <ColorListAllContrast key={key} contrastList={contrastList} />;
 
       case 1:
-        return <BestContrastList contrastList={contrastList} />;
+        return <BestContrastList key={key} contrastList={contrastList} />;
 
       case 2:
-        return <IconDesign colorList={contrastList} />;
+        return <IconDesign key={key} colorList={contrastList} />;
 
       default:
         return null;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ColorSelector from "../ColorSelector/ColorSelector";
 import { contrast } from "../../utilities/contrast";
 import RatioCards from "../RatioCards/RatioCards";
@@ -29,10 +29,6 @@ export default function ContrastPicker() {
 
   const [contrastVal, setContrastVal] = useState(1);
 
-  useEffect(() => {
-    setContrastVal(contrast(bgRGB, textRGB));
-  }, [bgRGB, textRGB]);
-
   return (
     <div
       className={`relative p-1 flex justify-center items-center
@@ -54,7 +50,10 @@ export default function ContrastPicker() {
                 hexColor={bg}
                 setHexColor={setBg}
                 rgbMap={bgRGB}
-                setRgbMap={setBgRGB}
+                setRgbMap={(newRgbMap: RGBMap) => {
+                  setBgRGB(newRgbMap);
+                  setContrastVal(contrast(newRgbMap, textRGB));
+                }}
               />
             </div>
             <div className="flex-1 flex flex-col justify-center items-center">
@@ -63,7 +62,10 @@ export default function ContrastPicker() {
                 hexColor={textColor}
                 setHexColor={setTextColor}
                 rgbMap={textRGB}
-                setRgbMap={setTextRGB}
+                setRgbMap={(newRgbMap: RGBMap) => {
+                  setTextRGB(newRgbMap);
+                  setContrastVal(contrast(bgRGB, newRgbMap));
+                }}
               />
             </div>
           </div>
@@ -74,25 +76,6 @@ export default function ContrastPicker() {
             before:bg-linear-to-tr before:from-teal-500 before:to-green-400`}
         >
           <h3>Example text:</h3>
-          {/* <div
-            className="m-8 p-5 border-2 rounded-sm border-green-400"
-            style={{
-              backgroundColor: bg,
-              color: textColor,
-            }}
-          >
-            <p className="text-5xl mb-2"> Lorem ipsum dolor sit amet ✔ ✗ ☺</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum. ✔ ✗
-              ☺
-            </p>
-          </div> */}
           <ExampleText color1={bg} color2={textColor} />
         </div>
         <div
@@ -125,6 +108,7 @@ export default function ContrastPicker() {
             setValues={(rgb1, rgb2) => {
               setBgRGB(rgb1);
               setTextRGB(rgb2);
+              setContrastVal(contrast(rgb1, rgb2));
               setBg(rgbToHex(rgb1.red, rgb1.green, rgb1.blue));
               setTextColor(rgbToHex(rgb2.red, rgb2.green, rgb2.blue));
             }}

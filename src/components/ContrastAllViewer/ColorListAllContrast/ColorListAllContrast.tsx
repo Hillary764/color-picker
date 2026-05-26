@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { calcWcagResult, WcagResultMap } from "../../../utilities/wcagResults";
 import { contrast } from "../../../utilities/contrast";
 
@@ -20,12 +20,6 @@ interface Props {
 
 export default function ColorListAllContrast({ contrastList }: Props) {
   const [currColorIndex, setCurrColorIndex] = useState(0);
-
-  useEffect(() => {
-    if (currColorIndex >= contrastList.length) {
-      setCurrColorIndex(0);
-    }
-  }, [contrastList, currColorIndex]);
 
   if (contrastList.length < 1) {
     return null;
@@ -96,7 +90,7 @@ export default function ColorListAllContrast({ contrastList }: Props) {
                 />
                 <RatioCards ratio={contrastRatioItem.ratio} />
               </div>
-            )
+            ),
           )}
         </div>
       </div>

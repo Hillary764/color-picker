@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CombinedColorValue } from "../ContrastAllViewer";
 import { contrast } from "../../../utilities/contrast";
 import RatioCards from "../../RatioCards/RatioCards";
@@ -16,31 +16,6 @@ export default function IconDesign({ colorList }: Props) {
 
   const [first, setFirst] = useState<number>(0);
   const [second, setSecond] = useState<number>(0);
-
-  useEffect(() => {
-    const newLength = colorList.length;
-
-    setSelectedOptions((state) => {
-      return state.filter((currValue) => {
-        if (currValue >= newLength) {
-          return false;
-        }
-        return true;
-      });
-    });
-
-    setFirst(0);
-    setSecond(0);
-
-    setIndexEdges((state) => {
-      return state.filter((edge) => {
-        if (edge[0] >= newLength || edge[1] >= newLength) {
-          return false;
-        }
-        return true;
-      });
-    });
-  }, [colorList]);
 
   function addIndexEdge(newEdge: EdgeByIndex) {
     setIndexEdges((state) => {
@@ -226,7 +201,9 @@ export default function IconDesign({ colorList }: Props) {
               key={`select-button-${index}-${colorVal}`}
               className={`py-2 px-6 border-2 border-green-300`}
             >
-              <span className="p-1 bg-slate-950 rounded-sm">{colorVal.hex}</span>
+              <span className="p-1 bg-slate-950 rounded-sm">
+                {colorVal.hex}
+              </span>
             </button>
           ))}
         </div>
