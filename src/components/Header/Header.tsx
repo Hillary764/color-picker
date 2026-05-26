@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { UserContext } from "../../utilities/AuthProvider";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../utilities/firebaseInit";
+import HeaderSidebar from "./HeaderSidebar/HeaderSidebar";
 
 export default function Header() {
   const user = useContext(UserContext);
@@ -47,11 +48,14 @@ export default function Header() {
             onClick={() => {
               signInWithPopup(auth, provider);
             }}
-            className={`relative mx-2 block border-2 px-2 rounded-sm border-slate-950 self-center`}
+            className={`relative mx-2 block px-7 py-0.5 rounded-lg bg-slate-950 text-green-300 self-center`}
           >
             Login
           </button>
         )}
+        <div className="relative">
+          <HeaderSidebar />
+        </div>
       </div>
     </header>
   );
