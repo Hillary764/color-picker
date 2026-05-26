@@ -40,7 +40,7 @@ export default function ContrastAllViewer({ contrastList }: Props) {
         <Card
           className={`${
             windowIndex == 0
-              ? `[&>div]:bg-gradient-to-tr
+              ? `[&>div]:bg-linear-to-tr
                [&>div]:from-teal-500 [&>div]:to-green-400 [&>div]:text-slate-950 `
               : ``
           }`}
@@ -57,7 +57,7 @@ export default function ContrastAllViewer({ contrastList }: Props) {
         <Card
           className={`${
             windowIndex == 1
-              ? `[&>div]:bg-gradient-to-tr
+              ? `[&>div]:bg-linear-to-tr
                [&>div]:from-teal-500 [&>div]:to-green-400 [&>div]:text-slate-950 `
               : ``
           }`}
@@ -74,7 +74,7 @@ export default function ContrastAllViewer({ contrastList }: Props) {
         <Card
           className={`${
             windowIndex == 2
-              ? `[&>div]:bg-gradient-to-tr
+              ? `[&>div]:bg-linear-to-tr
                [&>div]:from-teal-500 [&>div]:to-green-400 [&>div]:text-slate-950 `
               : ``
           }`}

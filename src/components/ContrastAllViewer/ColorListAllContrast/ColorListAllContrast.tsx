@@ -72,7 +72,7 @@ export default function ColorListAllContrast({ contrastList }: Props) {
             }}
             key={`${colorItem.hex}-${colorIndex}`}
           >
-            <span className="rounded p-2 bg-slate-950">
+            <span className="rounded-sm p-2 bg-slate-950">
               Examine color #{colorIndex + 1}
             </span>
           </button>
@@ -81,7 +81,7 @@ export default function ColorListAllContrast({ contrastList }: Props) {
       <div
         className={`relative pt-4 mt-6 
             before:top-0 before:h-1 before:w-full before:absolute before:rounded-full
-            before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
+            before:bg-linear-to-tr before:from-teal-500 before:to-green-400`}
       >
         <h2>Contrast Ratios for color {currColorIndex + 1}</h2>
         <div>

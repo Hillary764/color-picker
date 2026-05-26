@@ -5,7 +5,7 @@ export default function Header() {
     <header
       className={`w-full h-fit p-4
         flex flex-row justify-between flex-wrap
-        bg-gradient-to-tr from-teal-500 to-green-400 text-slate-950`}
+        bg-linear-to-tr from-teal-500 to-green-400 text-slate-950`}
     >
       <p className="text-lg">Contrast Picker</p>
       <nav className="flex flex-row flex-wrap gap-3 items-center">
@@ -16,7 +16,7 @@ export default function Header() {
         >
           Text Contrast
         </Link>
-        <div className="h-2/3 w-0 rounded border-l-2 border-black" />
+        <div className="h-2/3 w-0 rounded-sm border-l-2 border-black" />
         <Link
           className={`relative before:absolute before:bottom-0 before:left-0 before:h-px before:w-0
           before:bg-slate-950 hover:before:w-full before:transition-[width]`}
@@ -24,7 +24,7 @@ export default function Header() {
         >
           Icon Contrast
         </Link>
-        <div className="h-2/3 w-0 rounded border-l-2 border-black" />
+        <div className="h-2/3 w-0 rounded-sm border-l-2 border-black" />
         <Link
           className={`relative before:absolute before:bottom-0 before:left-0 before:h-px before:w-0
           before:bg-slate-950 hover:before:w-full before:transition-[width]`}

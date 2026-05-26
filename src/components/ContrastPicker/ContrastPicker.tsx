@@ -38,14 +38,14 @@ export default function ContrastPicker() {
       className={`relative p-1 flex justify-center items-center
         text-green-300
         before:absolute before:w-full before:h-full before:-z-10
-        before:bg-gradient-to-tr before:from-teal-500 before:to-green-400 before:rounded-md`}
+        before:bg-linear-to-tr before:from-teal-500 before:to-green-400 before:rounded-md`}
     >
       <div className={`bg-slate-950 w-full rounded-md p-4`}>
         <h2 className={`text-xl`}>Check color contrast:</h2>
         <form
           className={`mt-2 pt-5 relative w-full
             before:top-0 before:h-1 before:w-full before:absolute before:rounded-full
-            before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
+            before:bg-linear-to-tr before:from-teal-500 before:to-green-400`}
         >
           <div className="flex flex-col md:flex-row gap-2">
             <div className="flex-1 flex flex-col justify-center items-center">
@@ -71,11 +71,11 @@ export default function ContrastPicker() {
         <div
           className={`mt-8 pt-5 relative w-full
             before:top-0 before:h-1 before:w-full before:absolute before:rounded-full
-            before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
+            before:bg-linear-to-tr before:from-teal-500 before:to-green-400`}
         >
           <h3>Example text:</h3>
           {/* <div
-            className="m-8 p-5 border-2 rounded border-green-400"
+            className="m-8 p-5 border-2 rounded-sm border-green-400"
             style={{
               backgroundColor: bg,
               color: textColor,
@@ -98,7 +98,7 @@ export default function ContrastPicker() {
         <div
           className={`mt-8 pt-5 relative w-full
             before:top-0 before:h-1 before:w-full before:absolute before:rounded-full
-            before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
+            before:bg-linear-to-tr before:from-teal-500 before:to-green-400`}
         >
           <h3 className="text-lg">Contrast:</h3>
           <p className="w-full m-0 text-8xl text-center">
@@ -109,14 +109,14 @@ export default function ContrastPicker() {
         <div
           className={`mt-8 pt-5 relative w-full
             before:top-0 before:h-1 before:w-full before:absolute before:rounded-full
-            before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
+            before:bg-linear-to-tr before:from-teal-500 before:to-green-400`}
         >
           <RatioCards ratio={contrast(bgRGB, textRGB)} />
         </div>
         <div
           className={`mt-8 pt-5 relative w-full
             before:top-0 before:h-1 before:w-full before:absolute before:rounded-full
-            before:bg-gradient-to-tr before:from-teal-500 before:to-green-400`}
+            before:bg-linear-to-tr before:from-teal-500 before:to-green-400`}
         >
           <h3>Suggested higher contrast colors</h3>
           <GreaterContrast
